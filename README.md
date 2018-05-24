@@ -93,7 +93,7 @@ This exercise introduces the Yeoman generator and its capabilities for scaffoldi
 When the solution was generated, we used a placeholder URL. Now that the tunnel is running, we need to use the actual URL that is routed to our computer.
 
 1.	Return to the first Command Prompt window in which the generator was run.
-2.	Launch Visual Studio Code by running the command `code`
+2.	Launch Visual Studio Code by running the command `code .` (note the dot after the code command - this opens VS Code with the current folder selected)
 
 ![image6](https://github.com/Microsoft/InsiderDevTour18-Office/blob/master/img/6.png  "")
 
