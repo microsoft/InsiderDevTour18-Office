@@ -12,6 +12,17 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# temporary build artifacts
+dist/
+temp/
+lib/
+*.scss.ts
+*.resx.ts
+
+package-lock.json
+npm-shrinkwrap.json
+package.json
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

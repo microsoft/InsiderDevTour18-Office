@@ -1,0 +1,46 @@
+{
+  "$schema": "https://statics.teams.microsoft.com/sdk/v1.2/manifest/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.0",
+  "id": "c1da4d6e-9b8c-d0c1-c5d0-1f3755b2c9d0",
+  "version": "0.0.1",
+  "packageName": "io.ngrok.969155cd",
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://969155cd.ngrok.io",
+    "privacyUrl": "https://969155cd.ngrok.io/privacy.html",
+    "termsOfUseUrl": "https://969155cd.ngrok.io/tou.html"
+  },
+  "name": {
+    "short": "idev10",
+    "full": "idev10"
+  },
+  "description": {
+    "short": "TODO: add short description here",
+    "full": "TODO: add full description here"
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "accentColor": "#D85028",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://969155cd.ngrok.io/idev10TabConfig.html",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+  "staticTabs": [],
+  "bots": [],
+  "connectors": [],
+  "composeExtensions": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "969155cd.ngrok.io"
+  ]
+}
