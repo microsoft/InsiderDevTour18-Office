@@ -448,28 +448,9 @@ These steps assume that the application created in Exercise 1 is named **teams-a
       }
         ```
 
-    1. Add the follow method to the `teamsApp1TabTab` class. This method uses XMLHttp to make a call to the Microsoft Graph and displays the result.
 
-        ```typescript
-        public getData(token: string) {
-          let graphEndpoint = "https://graph.microsoft.com/v1.0/me";
-          if (this.configuration === "group") {
-            graphEndpoint = "https://graph.microsoft.com/v1.0/groups/" + this.groupId;
-          }
+1. Refresh the Tab in Microsoft Teams. Click the **Refresh** button to invoke the authentication and call to graph.microsoft.com.
 
-          var req = new XMLHttpRequest();
-          req.open("GET", graphEndpoint, false);
-          req.setRequestHeader("Authorization", "Bearer " + token);
-          req.setRequestHeader("Accept", "application/json;odata.metadata=minimal;");
-          req.send();
-          var result = JSON.parse(req.responseText);
-          document.getElementById("graph")!.innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
-        }
-        ```
-
-1. Refresh the Tab in Microsoft Teams. Click the **Get MSGraph Data** button to invoke the authentication and call to graph.microsoft.com.
-
-    ![](Images/Exercise3-09.png)
 
 This concludes Exercise 1B.
 
@@ -578,82 +559,8 @@ The Bot registration portal can be used to test the bot.
 
 ### Configure Visual Studio to Package bot
 
-Packaging a bot for Microsoft Teams is identical to packaging a tab. A manifest file (and related resources) are compressed into a zip file and added to a team.
+1. Within the Teams App Studio application, fill out basic metadata for a new application.
 
-Perform the following in Visual Studio. (Stop debugging before continuing. Leave ngrok running.)
-
-1. Right-click on the project, choose **Add | New Folder**. Name the folder **Manifest**.
-1. Add the displayed files from the **Lab Files** folder of this repository.
-
-    ![](Images/Exercise2-09.png)
-
-1. Open the **manifest.json** file just added to the project.
-
-    The **manifest.json** file requires several updates:
-    - The `id` property must contain the app ID from registration. Replace the token `[microsoft-app-id]` with the app ID.
-    - The `packageName` property must contain a unique identifier. The convention is to use the bot's URL in reverse format. Replace the token `[from-ngrok]` with the unique identifier from the Forwarding address.
-    - Similarly, the `developer` property has three URLs that should match the hostname of the Messaging endpoint. Replace the token `[from-ngrok]` with the unique identifier from the Forwarding address.
-    - The `botId` property (in the `bots` collection property) also requires the app ID from registration. Replace the token `[microsoft-app-id]` with the app ID.
-    - Save and close the **manifest.json** file.
-
-1. Update the Visual Studio project to compress the Manifest folder during build.
-    - In Solution Explorer, right-click on the project and choose **Unload Project**. If prompted, click **Yes** to save changes.
-
-        ![](Images/Exercise2-10.png)
-
-    - Right-click on the project file and choose **Edit [project-name].csproj**. *(In the image, the project name is teams-bot1.)*
-
-        ![](Images/Exercise2-11.png)
-
-    - Scroll to the bottom of the file. Add the following Target to the file. *(Be sure to add the target outside of the comment.)* This target will invoke a custom build task to compress the files in the Manfest directory.
-
-      ```xml
-      <Target Name="AfterBuild">
-        <ZipDir InputBaseDirectory="manifest"
-                OutputFileName="$(OutputPath)\$(MSBuildProjectName).zip"
-                OverwriteExistingFile="true"
-                IncludeBaseDirectory="false" />
-      </Target>
-      ```
-
-    - Add the following Task element to the **.csproj** file.
-
-      ```xml
-      <UsingTask TaskName="ZipDir" TaskFactory="CodeTaskFactory"
-                AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
-        <ParameterGroup>
-          <InputBaseDirectory ParameterType="System.String" Required="true" />
-          <OutputFileName ParameterType="System.String" Required="true" />
-          <OverwriteExistingFile ParameterType="System.Boolean" Required="false" />
-          <IncludeBaseDirectory ParameterType="System.Boolean" Required="false" />
-        </ParameterGroup>
-        <Task>
-          <Reference Include="System.IO.Compression" />
-          <Reference Include="System.IO.Compression.FileSystem" />
-          <Using Namespace="System.IO.Compression" />
-          <Code Type="Fragment" Language="cs"><![CDATA[
-            if (File.Exists(OutputFileName))
-            {
-              if (!OverwriteExistingFile)
-              {
-                return false;
-              }
-              File.Delete(OutputFileName);
-            }
-            ZipFile.CreateFromDirectory
-            (
-              InputBaseDirectory, OutputFileName,
-              CompressionLevel.Optimal, IncludeBaseDirectory
-            );
-          ]]></Code>
-        </Task>
-      </UsingTask>
-      ```
-
-    - Save and close the project file.
-    - In **Solution Explorer**, right-click on the project and choose **Reload Project**.
-
-1. Press **F5** to run the project. The new AfterBuild target will run, creating a zip file in the build output folder (bin\\)
 
 ### Sideload app into Microsoft Teams
 
