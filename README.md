@@ -7,7 +7,7 @@ For the Office 365 Tenant, the setup steps are detailed on the [Getting Started]
 The developer workstation requires the following tools for this lab.
 ### Install NodeJS & NPM
 Install [NodeJS](https://nodejs.org/) Long Term Support (LTS) version.
-- If you have NodeJS already installed please check you have the latest version using `node -v`. It should return the current [LTS version](https://nodejs.org/en/download/).
+- If you have NodeJS already installed please check you have the latest version using `node -v`. It should return the current [LTS version](https://nodejs.org/en/download/). If your version is earlier than the latest LTS version, the easiest way to upgrade is to re-download and run the installer from that site.
 - Allowing the Node setup program to update the computer PATH during setup will make the console-based tasks in this easier to accomplish.
 After installing node, make sure npm is up to date by running following command:
 ```
