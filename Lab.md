@@ -369,39 +369,45 @@ With the tab configured, the content page can now render information as selected
 
 These steps assume that the application created in Exercise 1 is named **teams-app-1**. Furthermore, paths listed in this section are relative to the `src/app/` folder in the generated application.
 
-1. Open the file **web/teamsApp1TabTab.html**
-    1. Locate the `<div>` element with the id of `app`. Replace that element with the following code snippet.
+1. Open the file **web/teamsApp1TabTab.html**. Just before the `</body>` element add the following code snippet.
 
-        ```html
-        <div id='app'>
-          Loading...
-        </div>
-        <div>
-          <button id="getDataButton">Get MSGraph Data</button>
-          <div id="graph"></div>
-        </div>
-        ```
-
-    1. Add the following CSS link to the `<head>` element.
-
-        ```html
-        <link rel="stylesheet" type="text/css" href="assets/css/msteams-app.css">
-        ```
+      ```html
+      <div>
+       <div id="graph"></div>
+      </div>
+      ```
 
 1. Open the file **scripts/teamsApp1TabTab.ts**.
-    1. Locate the constructor method.  Replace the constructor with the following code snippet. (The snippet includes code to save the configured value as a class-level variable.)
+    1. Add the following refresh() method above the componentWillMount() method.
 
         ```typescript
-        configuration?: string;
-        groupId?: string;
-        token?: string;
+       public refresh() {
+           let graphElement = document.getElementById("graph");
+           graphElement!.innerText = "Loading profile...";
 
-        /**
-        * Constructor for teamsApp1Tab that initializes the Microsoft Teams script
-        */
-        constructor() {
-          microsoftTeams.initialize();
-        }
+           microsoftTeams.authentication.authenticate({
+               url: "/auth.html",
+               width: 700,
+               height: 500,
+               successCallback: (data) => {
+
+                 let graphEndpoint = "https://graph.microsoft.com/v1.0/me";
+
+                 var req = new XMLHttpRequest();
+                 req.open("GET", graphEndpoint, false);
+                 req.setRequestHeader("Authorization", "Bearer " + data);
+                 req.setRequestHeader("Accept", "application/json;odata.metadata=minimal;");
+                 req.send();
+
+                 var result = JSON.parse(req.responseText);
+
+                 document.getElementById("graph")!.innerHTML = `<table><tr><td>Name</td><td>${result.displayName}<//td></tr><tr><td>Job</td><td>${result.jobTitle}<//td></tr><tr><td>Location</td><td>${result.officeLocation}<//td></tr></table>`;
+               },
+               failureCallback: function (err) {
+                 document.getElementById("graph")!.innerHTML = "Failed to authenticate and get token.<br/>" + err;
+               }
+             });
+         }
         ```
 
     1. Locate the `doStuff` method. Replace the method with the following code snippet.
@@ -411,40 +417,6 @@ These steps assume that the application created in Exercise 1 is named **teams-a
         ```
         <PrimaryButton onClick={ this.refresh }>Refresh</PrimaryButton>
         ```
-
-    1. Add the following function to the `teamsApp1TabTab` object. This function runs in response to the button click.
-
-        ```typescript
-        public refresh() {
-    
-        let graphElement = document.getElementById("graph");
-        graphElement!.innerText = "Loading profile...";
-
-        microsoftTeams.authentication.authenticate({
-            url: "/auth.html",
-            width: 700,
-            height: 500,
-            successCallback: (data) => {
-
-              let graphEndpoint = "https://graph.microsoft.com/v1.0/me";
-              
-              var req = new XMLHttpRequest();
-              req.open("GET", graphEndpoint, false);
-              req.setRequestHeader("Authorization", "Bearer " + data);
-              req.setRequestHeader("Accept", "application/json;odata.metadata=minimal;");
-              req.send();
-              
-              var result = JSON.parse(req.responseText);
-              
-              document.getElementById("graph")!.innerHTML = `<table><tr><td>Name</td><td>${result.displayName}<//td></tr><tr><td>Job</td><td>${result.jobTitle}<//td></tr><tr><td>Location</td><td>${result.officeLocation}<//td></tr></table>`;
-            },
-            failureCallback: function (err) {
-              document.getElementById("graph")!.innerHTML = "Failed to authenticate and get token.<br/>" + err;
-            }
-          });
-      }
-        ```
-
 
 1. Refresh the Tab in Microsoft Teams. Click the **Refresh** button to invoke the authentication and call to graph.microsoft.com.
 
