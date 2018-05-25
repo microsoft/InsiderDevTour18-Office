@@ -1,20 +1,10 @@
-# Fundamentals of Teams Development
-
-In this lab, you will prepare your computer for developing Microsoft Teams apps, learn the steps to package and test your application, build a basic Microsoft Teams Bot and a Microsoft Teams Tab.
-
-## Table of Contents
-
-1. [Create and test a basic Teams App using Yeoman](#exercise1)
-1. [Create and test a basic Teams Bot using Visual Studio](#exercise2)
-1. [Call Microsoft Graph inside a Tab](#exercise3)
+# Create Productive Apps with Office 365
 
 ## Prerequisites
 
 Developing Apps for Microsoft Teams requires preparation for both the Office 365 Tenant and the development workstation.
 
-Note you will need to get an Office 365 tenancy for working with Teams.  To acquire this, visit https://aka.ms/offdp and sign up for the Office Developer Program, where you will get a test Office tenancy.  Alternately, an Office tenancy is also avialable with MSDN subscriptions.
-
-For the Office 365 Tenant, the setup steps are detailed on the [Getting Started page](https://msdn.microsoft.com/en-us/microsoft-teams/setup). Note that while the Getting Started page indicates that the Public Developer Preview is optional, this lab includes steps that not possible unless the Preview is enabled.
+Note you will need to get an Office 365 tenancy for working with Teams.  Please refer to the Office 365 tenant spreadsheet on the Insider Tour Teams site in the *General/Files/Session Content* folder. Each tour venue has its own tenant to avoid conflicts.
 
 ### Install Developer Tools
 
@@ -84,7 +74,6 @@ Make sure Teams is installed and login with your Office tenant account. Make sur
 <a name="exercise1"></a>
 
 ## Machine Pre-Demo Preparation:  Create and Test a Basic Teams App using Yeoman
-
 
 **Note**: In this demo, we will set up a pre-prepared Teams tenancy so that users don't have to watch these files download.  We will also pre-add some authentication files to the project.
 
@@ -556,7 +545,7 @@ The Bot registration portal can be used to test the bot.
 
     ![](Images/Exercise4-04.PNG)
     
-1. Now select **Test and distribute**. Click the **Export** button to save the packaged zip file to the *Downloads* folder on your machine. We will use this zip file in the next step. 
+1. Now select **Test and distribute**. Click the **Export** button to save the packaged zip filename to the *Downloads* folder on your machine. We will use this zip file in the next step. 
 
     ![](Images/Exercise4-05.PNG)
 
