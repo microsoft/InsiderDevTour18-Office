@@ -72,6 +72,14 @@ You can use any code editor or IDE that supports these technologies, however the
 Download and install the Bot Application template zip from the direct download link [http://aka.ms/bf-bc-vstemplate](http://aka.ms/bf-bc-vstemplate). Save the zip file to your Visual Studio 2017 templates directory which is traditionally located in `%USERPROFILE%\Documents\Visual Studio 2017\Templates\ProjectTemplates\`
 
    ![Bot Template In Templates Directory](Images/BotTemplate.png)
+   
+### Teams Setup
+
+Make sure Teams is installed and login with your Office tenant account. Make sure the App Studio app is installed in Teams. If not use the Teams Store to find it and install. Once installed, open **App Studio** and click on the **Manifest editor** tab.
+
+1. Create a new app. Fill out all of the required fields in the **App details** section. That is all we need for now. We will use this later on for the Teams bot demo.
+
+   ![](Images/Exercise4-02.png)
 
 <a name="exercise1"></a>
 
@@ -540,25 +548,24 @@ The Bot registration portal can be used to test the bot.
 
 ### Configure Visual Studio to Package bot
 
-1. Within the Teams App Studio application, fill out basic metadata for a new application.
+1. Within the Teams App Studio application, go to the app we created ahead of time at the beginning. Click on the **Manifest editor** tab and select the app you created. Click on **Bots** in the **Capabilities** section.
 
+    ![](Images/Exercise4-03.png)
+    
+1. On the Bots pane, click the **Set up** button for an existing bot. Give the bot a name and paste in your bot app ID from the bot registration process we did earlier.
+
+    ![](Images/Exercise4-04.png)
+    
+1. Now select **Test and distribute**. Click the **Export** button to save the packaged zip file to the *Downloads* folder on your machine. We will use this zip file in the next step. 
+
+    ![](Images/Exercise4-05.png)
 
 ### Sideload app into Microsoft Teams
 
-Although not strictly necessary, in this lab the bot will be added to a new Team.
-
-1. In the Microsoft Teams application, click the **Add team** link. Then click the **Create team** button.
-
-    ![](Images/Exercise1-08.png)
-
-1. Enter a team name and description. In this example, the Team is named **teams-bot-1**. Click **Next**.
-1. Optionally, invite others from your organization to the team. This step can be skipped in this lab.
-1. The new team is shown. In the left-side panel, click the ellipses next to the team name. Choose **Manage team** from the context menu.
-
-    ![](Images/Exercise2-12.png)
+Choose a Team to add the bot to. Like before when we added the tab app, navigate to the **Manage Team** pane for the Team.
 
 1. On the Manage team display, click **Apps** in the tab strip. Then click the **Upload a custom app** link at the bottom right corner of the application.
-1. Select the **teams-bot1.zip** file from the *bin* folder. Click **Open**.
+1. Select the **teams-bot1.zip** file from the *Downloads* folder. Click **Open**. Your  zip file may be different based on what you called your Teams app.
 1. The app is displayed. Notice information about the app from the manifest (Description and Icon) is displayed.
 
     ![](Images/Exercise2-13.png)
