@@ -410,15 +410,27 @@ These steps assume that the application created in Exercise 1 is named **teams-a
          }
         ```
 
-    1. Locate the `doStuff` method. Replace the method with the following code snippet.
-    
-     This method will display the configured value and attach a handler to the GetData button.
+    1. Locate the `PrimaryButton` tag. Replace the tag with the following code snippet. This will call the refresh method above when clicked and kick off the Graph authorization flow.
 
         ```
         <PrimaryButton onClick={ this.refresh }>Refresh</PrimaryButton>
         ```
+1. Switch over to the **auth.ts** file and locate the `performAuthV2` method. Copy your application ID you registered earlier and replace `[PASTE YOUR APP ID FROM APPS.DEV.MICROSOFT.COM HERE]` with it as shown below.
 
-1. Refresh the Tab in Microsoft Teams. Click the **Refresh** button to invoke the authentication and call to graph.microsoft.com.
+   ```typescript
+    public performAuthV2(level: string) {
+      // Setup auth parameters for MSAL
+      let graphAPIScopes: string[] = ["https://graph.microsoft.com/user.read", "https://graph.microsoft.com/group.read.all"];
+      let userAgentApplication = new Msal.UserAgentApplication(
+                                          "[PASTE YOUR APP ID FROM APPS.DEV.MICROSOFT.COM HERE]",
+                                          "https://login.microsoftonline.com/common",
+                                          this.tokenReceivedCallback);
+
+   ```
+
+1. Save all of your file changes. With `gulp serve` still running your changes should automatically be served out. Refresh the Tab in Microsoft Teams. Click the **Refresh** button to invoke the authentication and call to graph.microsoft.com.
+
+1. Login with your Office tenant when prompted and grant permission for the tab to access the account's Graph information. You should now see the tenant's name, position, and location get displayed.
 
 
 This concludes Exercise 1B.
