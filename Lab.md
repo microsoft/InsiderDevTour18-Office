@@ -153,6 +153,7 @@ Using **npm**, add the Microsoft Authentication library to the project.
         </body>
         </html>
         ```
+   > Note: If your app is not called **teams app1** you will need to replace **teamsApp1** in the `teamsApp1.Auth()` call for the code above.
 
 1. Add a new file to the **scripts** folder named **auth.ts**
 
@@ -162,6 +163,7 @@ Using **npm**, add the Microsoft Authentication library to the project.
         /**
         * Implementation of the teams app1 Auth page
         */
+        /// <reference path="../../../node_modules/msal/out/msal.d.ts" />
         export class Auth {
           private token: string = "";
           private user: Msal.User;
@@ -328,7 +330,7 @@ This concludes Exercise 1A.
 <a name="exercise3"></a>
 ## Exercise 1B: Call Microsoft Graph inside a Tab
 
-This section of the lab will extend the tab created in Exercise 1 to call the Microsoft Graph. The Exercise contains many code files. The **Lab Files** folder contains files that contain the code and are provided to facilitate copy/paste of the code rather than typing.
+This section of the lab will extend the tab created in Exercise 1 to call the Microsoft Graph. The Exercise contains many code files. The **solutions** folder contains files that contain the code and are provided to facilitate copy/paste of the code rather than typing.
 
 
 ### Register an application in AAD
@@ -354,11 +356,6 @@ To enable an application to call the Microsoft Graph, an application registratio
     ```
 
 1. Click the **Add URL** button.
-1. Using the hostname from ngrok, enter a **Redirect URL** to the `adminconsent.html` file.
-
-    ```
-    https://[replace-this].ngrok.io/adminconsent.html
-    ```
 
     ![](Images/Exercise3-03.png)
 
