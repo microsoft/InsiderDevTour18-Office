@@ -79,7 +79,7 @@ Make sure Teams is installed and login with your Office tenant account. Make sur
 
 1. Create a new app. Fill out all of the required fields in the **App details** section. That is all we need for now. We will use this later on for the Teams bot demo.
 
-   ![](Images/Exercise4-02.png)
+   ![](Images/Exercise4-02.PNG)
 
 <a name="exercise1"></a>
 
@@ -550,15 +550,15 @@ The Bot registration portal can be used to test the bot.
 
 1. Within the Teams App Studio application, go to the app we created ahead of time at the beginning. Click on the **Manifest editor** tab and select the app you created. Click on **Bots** in the **Capabilities** section.
 
-    ![](Images/Exercise4-03.png)
+    ![](Images/Exercise4-03.PNG)
     
 1. On the Bots pane, click the **Set up** button for an existing bot. Give the bot a name and paste in your bot app ID from the bot registration process we did earlier.
 
-    ![](Images/Exercise4-04.png)
+    ![](Images/Exercise4-04.PNG)
     
 1. Now select **Test and distribute**. Click the **Export** button to save the packaged zip file to the *Downloads* folder on your machine. We will use this zip file in the next step. 
 
-    ![](Images/Exercise4-05.png)
+    ![](Images/Exercise4-05.PNG)
 
 ### Sideload app into Microsoft Teams
 
