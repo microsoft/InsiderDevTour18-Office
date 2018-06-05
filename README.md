@@ -475,7 +475,9 @@ Before registering the bot, note the URL configured for the solution in Visual S
 
 ### Register the bot
 
-> **Note:** The process of Bot registration will change effective March 31, 2018. Please read [Register a bot with Bot Service](https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration) for more details of the new registration procedure.
+![](Images/important.png)
+
+> **Note:** The process of Bot registration changed effective March 31, 2018. The process below will still work but there will be a warning message about a required migration to Azure. Once you add the Teams channel to the bot then this requirement will change to a recommendation. To reduce churn to this session we are leaving the flow as-is. For more information you can read this page [here](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0). For more info on registering through Azure please read [Register a bot with Bot Service](https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration).
 
 1. Go to the Microsoft Bot Framework portal at https://dev.botframework.com/bots/new and sign in. (The bot registration portal accepts a Work or School Account or a Microsoft Account.)
 1. Click **Create a bot or skill**. (If the Create button is not shown, click **My bots** in the top navigation.)
