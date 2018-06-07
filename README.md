@@ -65,9 +65,15 @@ Download and install the Bot Application template zip from the direct download l
    
 ### Teams Setup
 
-Make sure Teams is installed and login with your Office tenant account. Make sure the App Studio app is installed in Teams. If not use the Teams Store to find it and install. Once installed, open **App Studio** and click on the **Manifest editor** tab.
+1. Confirm sideloading apps is enabled in Teams. In a browser login into http://office.com with your Office Tenant and follow the instructions on this [page](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/get-started-tenant). You will need to **restart Teams** after changing any sideload settings.
 
-1. Create a new app. Fill out all of the required fields in the **App details** section. That is all we need for now. We will use this later on for the Teams bot demo.
+   ![](Images/enableteamsandapps.png)
+   
+2. Make sure Teams is installed and login with your Office tenant account. 
+
+3. Make sure the App Studio app is installed in Teams. If not use the Teams Store to find it and install. Once installed, open **App Studio** and click on the **Manifest editor** tab.
+
+4. Create a new app. Fill out all of the required fields in the **App details** section. That is all we need for now. We will use this later on for the Teams bot demo.
 
    ![](Images/Exercise4-02.PNG)
 
