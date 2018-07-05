@@ -4,7 +4,7 @@
 
 Developing Apps for Microsoft Teams requires preparation for both the Office 365 Tenant and the development workstation.
 
-Note you will need to get an Office 365 tenancy for working with Teams.  Please refer to the Office 365 tenant spreadsheet on the Insider Tour Teams site in the *General/Files/Session Content* folder. Each tour venue has its own tenant to avoid conflicts.
+Note you will need to get an Office 365 tenancy for working with Teams.  
 
 ### Install Developer Tools
 
